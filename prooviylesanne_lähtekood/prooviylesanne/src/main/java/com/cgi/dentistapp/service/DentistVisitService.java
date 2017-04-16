@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.cgi.dentistapp.dao.DentistVisitDao;
 import com.cgi.dentistapp.dao.entity.DentistVisitEntity;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 @Service
 @Transactional
@@ -23,6 +24,7 @@ public class DentistVisitService {
         dentistVisitDao.create(visit);
     }
 
+    @ModelAttribute("allVisitsList")
     public List<DentistVisitEntity> listVisits () {
         return dentistVisitDao.getAllVisits();
     }

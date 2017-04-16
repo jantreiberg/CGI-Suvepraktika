@@ -18,13 +18,18 @@ public class DentistVisitEntity {
     private Long id;
 
     @Column(name = "visit_time")
-    private Date visitTime;
+    public Date visitTime;
+
+    @Column(name = "dentist_name")
+    public String dentistName;
 
     public DentistVisitEntity() {
     }
 
     public DentistVisitEntity(String dentistName, Date visitTime) {
+
         this.setVisitTime(visitTime);
+        this.setDentistName(dentistName);
     }
 
     public Long getId() {
@@ -39,8 +44,16 @@ public class DentistVisitEntity {
         return visitTime;
     }
 
-    public void setVisitTime(Date visitTime) {
+    private void setVisitTime(Date visitTime) {
         this.visitTime = visitTime;
+    }
+
+    public String getDentistname(){
+        return dentistName;
+    }
+
+    private void setDentistName(String dentistName) {
+        this.dentistName = dentistName;
     }
 
 }

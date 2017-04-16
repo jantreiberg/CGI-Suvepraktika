@@ -1,0 +1,21 @@
+<html>
+<body>
+
+
+    <h2 th:text="#{title.list}">title.list</h2>
+    <table>
+        <thead>
+        <tr>
+            <th th:text="#{arsti.nimi}">arsti.nimi</th>
+            <th th:text="#{visiidi.kuupaev}">visiidi.kuupaev</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="i : ${visits}">
+                <td th:text="${i.dentistName}"></td>
+                <td th:text="${i.visitTime}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -23,3 +23,5 @@ public class DentistVisitDao {
         return entityManager.createQuery("SELECT e FROM DentistVisitEntity e").getResultList();
     }
 }
+
+

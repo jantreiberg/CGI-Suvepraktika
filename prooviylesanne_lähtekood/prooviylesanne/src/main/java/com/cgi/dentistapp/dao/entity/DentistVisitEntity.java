@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "dentist_visit")
@@ -17,9 +18,11 @@ public class DentistVisitEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    //Visitation time
     @Column(name = "visit_time")
     public Date visitTime;
 
+    //Doctors name
     @Column(name = "dentist_name")
     public String dentistName;
 

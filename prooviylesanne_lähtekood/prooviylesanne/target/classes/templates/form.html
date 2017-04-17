@@ -1,4 +1,4 @@
-<html>
+<html xmlns:form="http://www.w3.org/1999/html">
 <body>
 <form action="#" th:action="@{/}" th:object="${dentistVisitDTO}" method="post">
     <table>
@@ -18,6 +18,26 @@
             </td>
         </tr>
     </table>
+</form>
+
+<form action="#" th:action="@{/}" th:object="${dentistVisitDTO}" method="post">
+    <div class="col-lg-3" th:object="${dentistVisitDTO}">
+        <select class="form-control" id="selectDentistName" name="selectDentistName">
+            <option value="">Vali arsti nimi</option>
+            <option th:each="i : ${visits}"
+                    th:value="${i.dentistName}"
+                    th:text="${i.dentistName}"></option>
+        </select>
+    </div>
+    <div class="col-lg-3" th:object="${dentistVisitDTO}">
+        <select class="form-control" id="selectDentistTime" name="selectDentistTime">
+            <option value="">Vali visiidi aeg</option>
+            <option th:each="i : ${visits}"
+                    th:value="${i.visitTime}"
+                    th:text="${i.visitTime}"></option>
+        </select>
+    </div>
+    <button type="submit" th:text="#{registreeri.visiidile}"></button>
 </form>
 </body>
 </html>

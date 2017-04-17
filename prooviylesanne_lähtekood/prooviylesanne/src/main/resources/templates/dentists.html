@@ -1,0 +1,21 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html>
+<body>
+    <h2 th:text="#{title.listArstid}">title.listArstid</h2>
+    <table>
+        <thead>
+        <tr>
+            <th th:text="#{arsti.nimi}">arsti.nimi</th>
+            <th th:text="#{vastuvotu.kuupaev}">vastuvotu.kuupaev</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="i : ${visits}">
+            <td th:text="${i.dentistName}"></td>
+            <td th:text="${i.visitTime}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

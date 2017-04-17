@@ -27,19 +27,15 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/results").setViewName("results");
         registry.addViewController("/allvisits").setViewName("allvisits");
+        registry.addViewController("/dentists").setViewName("dentists");
 
     }
 
-    @GetMapping("/")
-    public String showRegisterForm(DentistVisitDTO dentistVisitDTO) {
-        return "form";
-    }
-
-    @RequestMapping("allvisits")
-    public String showAllVisits(Model model){
+    @RequestMapping("/")
+    public String showRegisterForm(DentistVisitDTO dentistVisitDTO, Model model) {
         List<DentistVisitEntity> visits = dentistVisitService.listVisits();
         model.addAttribute("visits", visits);
-        return "allvisits";
+        return "form";
     }
 
     @PostMapping("/")
@@ -50,6 +46,30 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
 
         dentistVisitService.addVisit(dentistVisitDTO.getDentistName(), dentistVisitDTO.getVisitTime());
         return "redirect:/results";
+    }
+
+    @RequestMapping("allvisits")
+    public String showAllVisits(Model model){
+        List<DentistVisitEntity> visits = dentistVisitService.listVisits();
+        model.addAttribute("visits", visits);
+        return "allvisits";
+    }
+
+    @RequestMapping("dentists")
+    public String showAllDentists(Model model){
+        List<DentistVisitEntity> visits = dentistVisitService.listVisits();
+        model.addAttribute("visits", visits);
+        return "dentists";
+    }
+
+    @PostMapping("dentists")
+    public String postDentist(@Valid DentistVisitDTO dentistVisitDTO, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "dentists";
+        }
+
+        dentistVisitService.addVisit(dentistVisitDTO.getDentistName(), dentistVisitDTO.getVisitTime());
+        return "redirect:/dentists";
     }
 
 }
